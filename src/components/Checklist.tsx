@@ -184,6 +184,9 @@ export default function Checklist() {
           <p className="text-sm text-gray-500 max-w-xl mx-auto">
             💡 CSVファイルをページにドラッグ&ドロップでも読み込めます
           </p>
+          <p className="text-xs text-dango-pink-600 max-w-xl mx-auto mt-2 px-4 py-2 bg-dango-pink-50/50 rounded-lg border border-dango-pink-200/30">
+            ⚠️ 現在開発中のため、端末に保存しない限りページリロードでデータが消えてしまいます
+          </p>
         </div>
         
         <div className="bg-dango-cream-50/90 backdrop-blur-sm rounded-3xl shadow-xl border border-dango-cream-200/30 p-6 sm:p-8 mb-8">
@@ -285,6 +288,18 @@ export default function Checklist() {
           </form>
         </div>
 
+        {checkedCount === totalCount && totalCount > 0 && (
+          <div className="mb-8 bg-gradient-to-r from-dango-pink-400 via-dango-green-400 to-dango-pink-400 rounded-3xl shadow-xl p-8 text-center text-white animate-in zoom-in duration-500">
+            <div className="text-6xl mb-4">🎉🍡</div>
+            <h2 className="text-3xl font-bold mb-3">
+              素晴らしい！すべて完了です
+            </h2>
+            <p className="text-lg opacity-90 max-w-md mx-auto">
+              完璧な準備ができました。忘れ物なしで素敵な時間をお過ごしください！
+            </p>
+          </div>
+        )}
+
         <div className="grid gap-4 sm:gap-6">
           {items.length === 0 ? (
             <div className="bg-dango-cream-50/80 backdrop-blur-sm rounded-3xl shadow-lg border border-dango-cream-200/30 p-12 text-center">
@@ -297,9 +312,16 @@ export default function Checklist() {
               </p>
             </div>
           ) : (
-            <div className="grid gap-3 sm:gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               {items.map((item, index) => (
-                <div key={item.id} className="animate-in slide-in-from-top duration-300" style={{ animationDelay: `${index * 50}ms` }}>
+                <div 
+                  key={item.id} 
+                  className="animate-in slide-in-from-top duration-300 transition-all duration-300" 
+                  style={{ 
+                    animationDelay: `${index * 50}ms`,
+                    order: item.isChecked ? 1000 + index : index
+                  }}
+                >
                   <ChecklistItem
                     id={item.id}
                     text={item.text}
@@ -312,18 +334,6 @@ export default function Checklist() {
             </div>
           )}
         </div>
-
-        {checkedCount === totalCount && totalCount > 0 && (
-          <div className="mt-8 bg-gradient-to-r from-dango-pink-400 via-dango-green-400 to-dango-pink-400 rounded-3xl shadow-xl p-8 text-center text-white animate-in zoom-in duration-500">
-            <div className="text-6xl mb-4">🎉🍡</div>
-            <h2 className="text-3xl font-bold mb-3">
-              素晴らしい！すべて完了です
-            </h2>
-            <p className="text-lg opacity-90 max-w-md mx-auto">
-              完璧な準備ができました。忘れ物なしで素敵な時間をお過ごしください！
-            </p>
-          </div>
-        )}
       </div>
     </div>
   )
