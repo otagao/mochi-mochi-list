@@ -164,7 +164,7 @@ export default function Checklist() {
   return (
     <div 
       className={`min-h-screen px-4 py-8 sm:px-6 lg:px-8 transition-all duration-300 ${
-        isDragOver ? 'bg-blue-50 ring-4 ring-blue-200 ring-inset' : ''
+        isDragOver ? 'bg-dango-pink-50 ring-4 ring-dango-pink-200 ring-inset' : ''
       }`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -172,10 +172,10 @@ export default function Checklist() {
     >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
-            <span className="text-2xl">📝</span>
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-dango-pink-400 to-dango-green-400 rounded-2xl mb-6 shadow-lg">
+            <span className="text-2xl">🍡</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-dango-pink-600 via-dango-green-600 to-dango-pink-600 bg-clip-text text-transparent mb-4">
             🍡 もちもちリスト
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-4">
@@ -186,25 +186,33 @@ export default function Checklist() {
           </p>
         </div>
         
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
+        <div className="bg-dango-cream-50/90 backdrop-blur-sm rounded-3xl shadow-xl border border-dango-cream-200/30 p-6 sm:p-8 mb-8">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4">
             <div>
-              <h2 className="text-lg font-semibold text-gray-800">進捗状況</h2>
-              <p className="text-sm text-gray-600">完了済み: {checkedCount} / {totalCount}</p>
+              <h2 className="text-lg font-semibold text-dango-green-800">進捗状況</h2>
+              <p className="text-sm text-dango-green-600">完了済み: {checkedCount} / {totalCount}</p>
             </div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex gap-2">
                 <button
                   onClick={handleExportCSV}
-                  className="px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="px-4 py-2 bg-dango-green-500 text-white rounded-xl hover:bg-dango-green-600 transition-colors font-medium text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  title="リストをCSV形式でダウンロードします"
                 >
-                  📤 CSV出力
+                  <div className="flex flex-col items-center">
+                    <span>📱 端末に保存</span>
+                    <span className="text-xs opacity-80">(CSV形式)</span>
+                  </div>
                 </button>
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="px-4 py-2 bg-dango-pink-500 text-white rounded-xl hover:bg-dango-pink-600 transition-colors font-medium text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  title="CSV形式のファイルを読み込みます"
                 >
-                  📥 CSV読込
+                  <div className="flex flex-col items-center">
+                    <span>📂 端末から読み込み</span>
+                    <span className="text-xs opacity-80">(CSV形式)</span>
+                  </div>
                 </button>
                 <input
                   ref={fileInputRef}
@@ -215,26 +223,26 @@ export default function Checklist() {
                 />
               </div>
               <div className="text-right">
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                <div className="text-3xl font-bold bg-gradient-to-r from-dango-pink-600 to-dango-green-600 bg-clip-text text-transparent">
                   {progress}%
                 </div>
-                <div className="text-sm text-gray-600">完了</div>
+                <div className="text-sm text-dango-green-600">完了</div>
               </div>
             </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div className="w-full bg-dango-cream-200 rounded-full h-4 overflow-hidden">
             <div 
-              className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full transition-all duration-700 ease-out shadow-lg"
+              className="bg-gradient-to-r from-dango-pink-400 to-dango-green-400 h-full rounded-full transition-all duration-700 ease-out shadow-lg"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
+        <div className="bg-dango-cream-50/90 backdrop-blur-sm rounded-3xl shadow-xl border border-dango-cream-200/30 p-6 sm:p-8 mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-800">新しい項目を追加</h2>
+            <h2 className="text-xl font-semibold text-dango-green-800">新しい項目を追加</h2>
             {isDragOver && (
-              <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium animate-pulse">
+              <div className="bg-dango-pink-100 text-dango-pink-700 px-3 py-1 rounded-full text-sm font-medium animate-pulse">
                 📁 CSVファイルをドロップしてください
               </div>
             )}
@@ -246,12 +254,12 @@ export default function Checklist() {
                 value={newItemText}
                 onChange={(e) => setNewItemText(e.target.value)}
                 placeholder="例：パスポート、充電器、お気に入りの本..."
-                className="flex-grow px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:bg-white transition-all duration-200 text-gray-800 placeholder-gray-500"
+                className="flex-grow px-6 py-4 bg-dango-cream-100 border-2 border-dango-cream-200 rounded-2xl focus:outline-none focus:border-dango-pink-400 focus:bg-white transition-all duration-200 text-dango-green-800 placeholder-dango-green-400"
               />
               <button
                 type="submit"
                 disabled={!newItemText.trim()}
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-2xl hover:from-blue-600 hover:to-indigo-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="px-8 py-4 bg-gradient-to-r from-dango-pink-400 to-dango-green-400 text-white rounded-2xl hover:from-dango-pink-500 hover:to-dango-green-500 focus:outline-none focus:ring-4 focus:ring-dango-pink-300/30 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 追加
               </button>
@@ -261,14 +269,14 @@ export default function Checklist() {
                 <button
                   type="button"
                   onClick={() => setItems(initialItems)}
-                  className="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium"
+                  className="px-4 py-2 text-sm bg-dango-cream-200 text-dango-green-700 rounded-xl hover:bg-dango-cream-300 transition-colors font-medium"
                 >
                   🔄 初期値に戻す
                 </button>
                 <button
                   type="button"
                   onClick={() => setItems([])}
-                  className="px-4 py-2 text-sm bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-colors font-medium"
+                  className="px-4 py-2 text-sm bg-dango-pink-100 text-dango-pink-700 rounded-xl hover:bg-dango-pink-200 transition-colors font-medium"
                 >
                   🗑️ 全て削除
                 </button>
@@ -279,12 +287,12 @@ export default function Checklist() {
 
         <div className="grid gap-4 sm:gap-6">
           {items.length === 0 ? (
-            <div className="bg-white/60 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-12 text-center">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full mb-6">
-                <span className="text-4xl">📝</span>
+            <div className="bg-dango-cream-50/80 backdrop-blur-sm rounded-3xl shadow-lg border border-dango-cream-200/30 p-12 text-center">
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-dango-pink-200 to-dango-green-200 rounded-full mb-6">
+                <span className="text-4xl">🍡</span>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">リストが空です</h3>
-              <p className="text-gray-600 max-w-md mx-auto">
+              <h3 className="text-2xl font-semibold text-dango-green-800 mb-2">リストが空です</h3>
+              <p className="text-dango-green-600 max-w-md mx-auto">
                 上のフォームから新しい項目を追加して、あなただけのチェックリストを作成しましょう。
               </p>
             </div>
@@ -306,8 +314,8 @@ export default function Checklist() {
         </div>
 
         {checkedCount === totalCount && totalCount > 0 && (
-          <div className="mt-8 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-3xl shadow-xl p-8 text-center text-white animate-in zoom-in duration-500">
-            <div className="text-6xl mb-4">🎉</div>
+          <div className="mt-8 bg-gradient-to-r from-dango-pink-400 via-dango-green-400 to-dango-pink-400 rounded-3xl shadow-xl p-8 text-center text-white animate-in zoom-in duration-500">
+            <div className="text-6xl mb-4">🎉🍡</div>
             <h2 className="text-3xl font-bold mb-3">
               素晴らしい！すべて完了です
             </h2>
